@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>晨晨宝的生日机密程序</title>
+    <style>
+        body { 
+            background: #FFF0F5; 
+            font-family: 'Microsoft Yahei', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .envelope {
+            position: relative; 
+            width: 200px; 
+            margin: 100px auto;
+            cursor: pointer; 
+            animation: float 2s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+        .envelope:hover {
+            transform: scale(1.1);
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .letter {
+            display: none; 
+            background: #FFF8F0; 
+            padding: 30px;
+            border-radius: 15px; 
+            box-shadow: 0 0 30px #FFB6C1;
+            max-width: 600px; 
+            margin: 50px auto; 
+            line-height: 1.8;
+            text-align: left;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .special-note { 
+            border-left: 3px solid #FF69B4; 
+            padding-left: 15px; 
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+        .blink {
+            animation: blink 1s infinite;
+            color: #FF1493;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        button {
+            background: #FF69B4;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #FF1493;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态信封 -->
+    <div class="envelope" onclick="openEnvelope()">
+        <"Press Here Chenchen">
+    </div>
+
+    <!-- 完整信件内容 -->
+    <div class="letter" id="letter">
+        <h1 style="color:#FF1493;text-align:center">✨给正在做PPT的晨晨同学✨</h1>
+
+        <p>这是我们相遇后第二个"云生日"啦！<br>
+           虽然隔着屏幕这么不容易，我们也没有被影响到，<br>
+        一直互相陪伴着耶 <span style="color:#FF69B4">❤ 就很开心 幸福！快见到了 ✨</span></p>
+
+        <p>谢谢你像小太阳一样照亮我平淡的日常，<br>
+        虽然你老嘲笑我学我问你do you LOOOOVE me 的样子很贱贱～</p>
+
+        <h3 style="border-bottom:2px dotted #FFB6C1">🎉 恭喜解锁人生新成就：</h3>
+        <ul style="padding-left:20px;">
+            <li>🔬 第10次18岁的young man（少年感持续充值成功）</li>
+            <li>💻 博士入学考试面试终极BOSS挑战通关者</li>
+            <li>🌐 即将拯救<span style="background:#FFF0F5">余杭家wifi信号</span>的准Dr.Chen！</li>
+        </ul>
+
+        <h3 style="border-bottom:2px dotted #FFB6C1">🚀 新岁加载特别程序：</h3>
+        <ul style="padding-left:20px;">
+            <li>▫️ 保持「分享欲！」给Lin发消息分享日常呀</li>
+            <li>▫️ 加速<span id="visaProgress">【美国 or 加拿大 visa 进度：75%】</span></li>
+            <li>▫️ 每日自动执行<span class="blink">「多爱女朋友1%」</span>的隐藏代码</li>
+        </ul>
+
+        <div class="special-note">
+            PS：当你/我穿越12小时时差来验收成果时<br>
+            🍜 268次泡面宵夜的陪伴 +<br>
+            📡 800次sese <small>（某人英语笔记：se=看，se²=多看两集）</small> +<br>
+            💞 所有晚霞攒下的拥抱 (不带小熊) =<br>
+            <strong style="color:#FF1493">即将执行的「见面.exe」程序！</strong>
+        </div>
+
+        <div style="text-align:center;">
+            <button onclick="playMusic()">
+                🎂 点击收取生日BGM能量
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.querySelector(".envelope").style.display = "none";
+            document.getElementById("letter").style.display = "block";
+            // 心跳音效
+            const audio = new Audio('https://www.soundjay.com/buttons/sounds/button-09.mp3');
+            audio.volume = 0.3;
+            audio.play();
+        }
+
+        function playMusic() {
+            // 网易云《小幸运》链接 - 可替换成你们的歌
+            window.open('https://www.youtube.com/watch?v=QNYT9wVwQ8A');
+        }
+
+        // 签证进度条动画
+        let progress = 75;
+        const progressInterval = setInterval(() => {
+            if(progress < 100) {
+                progress += Math.random()*0.5;
+                document.getElementById('visaProgress').innerHTML = 
+                    `【美国/加拿大visa进度：${Math.min(100, progress.toFixed(1))}%】`;
+            } else {
+                clearInterval(progressInterval);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
